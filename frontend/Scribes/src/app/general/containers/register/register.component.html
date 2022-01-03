@@ -1,0 +1,191 @@
+<section class="bg-white">
+  <div class="flex min-h-screen overflow-hidden">
+    <div class="relative flex-1 hidden w-0 overflow-hidden lg:block bg-blue-300">
+      <img class="absolute inset-0 object-cover w-4/5 h-auto m-auto"
+           src="/assets/illustrations/register-illustration.svg" alt="">
+    </div>
+
+    <div class="
+
+            flex flex-col
+            justify-center
+            flex-1
+            px-4
+            py-12
+            sm:px-6
+            lg:flex-none lg:px-20
+            xl:px-24
+
+          ">
+      <div>
+        <h1>{{message}}</h1>
+      </div>
+      <div class="w-full max-w-xl mx-auto lg:w-96">
+        <div>
+          <a href="/" class="text-blue-600 text-medium">Scribes.</a>
+          <h2 class="mt-6 text-3xl font-extrabold text-neutral-600"> Sign in. </h2>
+        </div>
+        <div class="mt-8">
+          <div class="mt-6">
+            <form class="space-y-6" [formGroup]="form">
+              <div>
+                <label for="email" class="block text-sm font-medium text-neutral-600"
+                       [ngClass]="{'text-red-700': fullName?.invalid && fullName?.touched}">
+                  Full Name
+                  <span class="text-sm font-light text-red-700" *ngIf="fullName?.invalid && fullName?.touched">
+                              ( Please enter your full name )
+                            </span>
+                </label>
+                <div class="mt-1">
+
+                  <input
+                    formControlName="fullName"
+                    id="fullName"
+                    name="fullName" type="text"
+                    placeholder="Full Name"
+                    [ngClass]="{'error-input': fullName?.invalid && fullName?.touched}"
+                    class="
+                            form-input
+                          ">
+                </div>
+              </div>
+
+
+              <div>
+
+                <label for="email" class="block text-sm font-medium text-neutral-600"
+                       [ngClass]="{'text-red-700': email?.invalid && email?.touched}">
+                  Email address
+                  <span class="text-sm font-light text-red-700" *ngIf="email?.invalid && email?.touched">
+                              ( Please enter your email adress 1 )
+                            </span>
+
+
+                </label>
+                <div class="mt-1">
+                  <input
+                    [ngClass]="{'error-input': email?.invalid && email?.touched}"
+                    id="email"
+                    name="password"
+                    type="email"
+                    formControlName="email"
+                    placeholder="Your Email"
+                    class="
+                         form-input
+                        ">
+                </div>
+              </div>
+              <div class="space-y-1">
+                <label for="password" class="block text-sm font-medium text-neutral-600"
+                       [ngClass]="{'text-red-700': password?.invalid && password?.touched}">
+                  Password
+                  <span class="text-sm font-light text-red-700" *ngIf="password?.invalid && password?.touched">
+                              ( Please enter a valid password )
+                            </span>
+                </label>
+                <div class="mt-1">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Your Password"
+                    formControlName="password"
+                    class="
+                          form-input
+                        ">
+                </div>
+                <span class="text-xs font-semibold text-gray-400 flex items-center space-x-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                            <span>
+                              Your Password should start with Capital letter
+                            </span>
+                          </span>
+                <span class="text-xs font-semibold text-gray-400 flex items-center space-x-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                            <span>
+                              Your Password should be at least 8 charachters long
+                            </span>
+                          </span>
+                <span class="text-xs font-semibold text-gray-400 flex items-center space-x-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                            <span>
+                              your password should contain numbers
+                            </span>
+                          </span>
+                <span class="text-xs font-semibold text-gray-400 flex items-center space-x-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                            <span>
+                              your password should contain at least one special caracter
+                            </span>
+                          </span>
+              </div>
+
+              <div class="flex items-center justify-between">
+
+                <div class="flex items-center">
+
+                  <input id="remember-me" name="remember-me" type="checkbox" placeholder="Your password" class="
+                          w-4
+                          h-4
+                          text-blue-600
+                          border-gray-200
+                          rounded
+                          focus:ring-blue-500
+                        ">
+                  <label for="remember-me" class="block ml-2 text-sm text-neutral-600"> Remember me </label>
+                </div>
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Forgot your password? </a>
+                </div>
+              </div>
+              <div>
+                <button type="submit"
+                        [disabled]="!form.valid"
+                        (click)="register()"
+                        class="
+                       flex
+                        items-center
+                        justify-center
+                        w-full
+                        px-10
+                        py-4
+                        text-base
+                        font-medium
+                        text-center text-white
+                        transition
+                        duration-500
+                        ease-in-out
+                        transform
+                        bg-blue-600
+                        rounded-xl
+                        hover:bg-blue-700
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-offset-2
+                        focus:ring-blue-500
+                        disabled:bg-blue-400
+                      "> Register
+                </button>
+              </div>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
